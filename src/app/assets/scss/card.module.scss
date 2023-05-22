@@ -1,5 +1,5 @@
 .card {
-    padding: 20px;
+    padding: 10px;
     flex: 0 0 32%;
     box-sizing: border-box;
 
@@ -14,10 +14,18 @@
         margin-bottom: 10px;
     }
 
+    p {
+        margin-bottom: 10px;
+    }
+
     time {
         display: block;
         font-size: 0.8em;
         opacity: 0.8;
         margin-bottom: 10px;
+    }
+
+    a {
+        color: blue;
     }
 }
