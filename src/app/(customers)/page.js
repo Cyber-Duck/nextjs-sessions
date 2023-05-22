@@ -1,12 +1,38 @@
-import Image from 'next/image'
-import styles from '../page.module.css'
+import Image from 'next/image';
+import styles from '../page.module.css';
+import Card from '@/components/Card';
 
-export default function Home() {
+async function getPosts() {
+    const res = await fetch(`http://localhost:3000/api/posts/`, { next: { revalidate: 3600 } });
+    return res.json();
+}
+
+export default async function Home() {
+
+    const posts = await getPosts();
+
   return (
     <main className={styles.main}>
       <div className={styles.description}>
         <h1>This is the home page</h1>
         <p>Lorem  ipsum dolor sit amet</p>
+      </div>
+
+      <div className={styles.grid}>
+        <h2>Posts</h2>
+      </div>
+
+      <div className={styles.grid}>
+        {posts.map(post => (
+            <Card
+                key={post.id}
+                title={post.title} 
+                img={post.img} 
+                date={new Date(post.date).toDateString()}
+                description={post.description}
+                slug={`/blog/${post.slug}`}
+            />
+        ))}
       </div>
 
       <div className={styles.grid}>
