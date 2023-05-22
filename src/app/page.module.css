@@ -29,6 +29,11 @@
   font-family: var(--font-mono);
 }
 
+.cards {
+  display: flex;
+  justify-content: space-between;
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(25%, auto));

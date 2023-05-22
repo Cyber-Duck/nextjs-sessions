@@ -22,7 +22,7 @@ export default async function Home() {
         <h2>Posts</h2>
       </div>
 
-      <div className={styles.grid}>
+      <div className={styles.cards}>
         {posts.map(post => (
             <Card
                 key={post.id}
