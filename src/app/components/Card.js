@@ -1,6 +1,8 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
-import styles from '../app/assets/scss/card.module.scss';
+import styles from '@/app/assets/scss/card.module.scss';
 
 export default function Card(props) {
     return(
