@@ -15,7 +15,7 @@ export default function Header() {
                 height={37}
                 priority/>
           </Link>
-          <p><Link href="/">Home</Link><Link href="/about/">About us</Link></p>
+          <p><Link href="/">Home</Link> <Link href="/about/">About us</Link> <Link href="/blog/">Blog</Link></p>
         </div>
       </header>
     )

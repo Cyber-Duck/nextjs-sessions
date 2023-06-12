@@ -13,7 +13,7 @@ export async function GET() {
         {
             'id': 2,
             'title': 'Quisque ut nulla ac',
-            'slug': '/quisque-ut-nulla-ac',
+            'slug': 'quisque-ut-nulla-ac',
             'description': 'Proin vehicula, velit ac aliquam faucibus, quam tortor placerat ipsum, vel mollis turpis ante ac augue.',
             'img': 'https://loremflickr.com/320/240/porto',
             'date': '2023-04-24T11:34:22+00:00'
@@ -21,7 +21,7 @@ export async function GET() {
         {
             'id': 3,
             'title': 'Nulla pretium molestie',
-            'slug': '/nulla-pretium-molestie',
+            'slug': 'nulla-pretium-molestie',
             'description': 'Fusce convallis orci at nulla feugiat, varius suscipit dui aliquam.',
             'img': 'https://loremflickr.com/320/240/colorado',
             'date': '2023-02-06T05:05:53+00:00'

@@ -37,7 +37,7 @@
   margin: 0 auto;
 }
 
-.content {
+.grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(25%, auto));
   width: var(--max-width);
