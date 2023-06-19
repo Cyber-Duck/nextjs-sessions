@@ -4,9 +4,9 @@ import Link from 'next/link';
 
 export async function generateMetadata({ params }) {
     async function getPost() {
-        const res = await fetch(`https://drupal-showcase.cyber-duck.co.uk/jsonapi/node/article/${params.slug}?include=field_image&fields[file--file]=uri,url`, {
+        const res = await fetch(`https://drupal-showcase.cyber-duck.co.uk/jsonapi/node/article/${params.slug}`, {
             headers: {
-                "Authorization": "Basic Y3liZXJkdWNrOnBsYXl0ZXN0Z3Jldzcy"
+                "Authorization": `Basic ${process.env.AUTH}`
             },
             next: {
                 revalidate: 10
@@ -27,7 +27,7 @@ export default async function Post({ params }) {
     async function getPost() {
         const res = await fetch(`https://drupal-showcase.cyber-duck.co.uk/jsonapi/node/article/${params.slug}?include=field_image&fields[file--file]=uri,url`, {
             headers: {
-                "Authorization": "Basic Y3liZXJkdWNrOnBsYXl0ZXN0Z3Jldzcy"
+                "Authorization": `Basic ${process.env.AUTH}`
             },
             next: {
                 revalidate: 10

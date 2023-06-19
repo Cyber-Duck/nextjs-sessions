@@ -4,10 +4,10 @@ import styles from '@/app/page.module.css';
 async function getPosts() {
     const res = await fetch(`https://drupal-showcase.cyber-duck.co.uk/jsonapi/node/article?page[limit]=3&include=field_image&fields[file--file]=uri,url`, {
         headers: {
-            "Authorization": "Basic Y3liZXJkdWNrOnBsYXl0ZXN0Z3Jldzcy"
+            "Authorization": `Basic ${process.env.AUTH}`
         },
         next: {
-            revalidate: 5
+            revalidate: 10
         }
     });
     return res.json();
