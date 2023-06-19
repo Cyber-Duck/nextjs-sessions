@@ -1,16 +1,9 @@
 import Image from 'next/image';
 import styles from '@/app/page.module.css';
-import Card from '@/app/components/Card';
+import LatestBlogs from '@/app/components/LatestBlogs';
+import { Suspense } from "react";
 
-async function getPosts() {
-    const res = await fetch(`http://localhost:3000/api/posts/`, { next: { revalidate: 3600 } });
-    return res.json();
-}
-
-export default async function Home() {
-
-    const posts = await getPosts();
-
+export default function Home() {
     return (
         <main className={styles.main}>
             <div className={styles.full}>
@@ -24,17 +17,10 @@ export default async function Home() {
                 <h2>Posts</h2>
             </div>
 
-            <div className={styles.cards}>
-                {posts.map(post => (
-                    <Card
-                        key={post.id}
-                        title={post.title} 
-                        img={post.img} 
-                        date={new Date(post.date).toDateString()}
-                        description={post.description}
-                        slug={`/blog/${post.slug}`}
-                    />
-                ))}
+            <div className={styles.container}>
+                <Suspense fallback={<div className={styles.loading}>Loading widget..</div>}>
+                    <LatestBlogs/>
+                </Suspense>
             </div>
 
             <div className={styles.grid}>
