@@ -26,7 +26,7 @@ export default async function LatestBlogs() {
                     img={post.image} 
                     date={new Date(post.attributes.created).toDateString()}
                     description={post.attributes.body.summary}
-                    slug={`/blog${post.attributes.path.alias}`}
+                    slug={`/blog/${post.id}`}
                 />
             ))}
         </div>

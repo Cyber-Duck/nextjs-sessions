@@ -4,21 +4,35 @@ import Link from 'next/link';
 
 export async function generateMetadata({ params }) {
     async function getPost() {
-        const res = await fetch(`http://localhost:3000/api/posts/${params.slug}`, { next: { revalidate: 30 } });
+        const res = await fetch(`https://drupal-showcase.cyber-duck.co.uk/jsonapi/node/article/${params.slug}?include=field_image&fields[file--file]=uri,url`, {
+            headers: {
+                "Authorization": "Basic Y3liZXJkdWNrOnBsYXl0ZXN0Z3Jldzcy"
+            },
+            next: {
+                revalidate: 10
+            }
+        });
         return res.json();
     }
 
     const post = await getPost();
 
     return {
-        title: `${post.title} | Next Sessions`,
+        title: `${post.data.attributes.title} | Next Sessions`,
         description: post.description,
     }
 }
 
 export default async function Post({ params }) {
     async function getPost() {
-        const res = await fetch(`http://localhost:3000/api/posts/${params.slug}`, { next: { revalidate: 30 } });
+        const res = await fetch(`https://drupal-showcase.cyber-duck.co.uk/jsonapi/node/article/${params.slug}?include=field_image&fields[file--file]=uri,url`, {
+            headers: {
+                "Authorization": "Basic Y3liZXJkdWNrOnBsYXl0ZXN0Z3Jldzcy"
+            },
+            next: {
+                revalidate: 10
+            }
+        });
         return res.json();
     }
 
@@ -27,12 +41,12 @@ export default async function Post({ params }) {
     return (
     <main className="main-about">
         <div className={styles.full}>
-            <h1>{post.title}</h1>
+            <h1>{post.data.attributes.title}</h1>
             <p>{post.description}</p>
-            <p>{new Date(post.date).toDateString()}</p>
+            <p><time>{new Date(post.data.attributes.created).toDateString()}</time></p>
             <hr className={styles.sep}/>
-            <p><Image src={post.img} alt={post.title} width="800" height="600" loading="lazy" /></p>
-            <div dangerouslySetInnerHTML={ { __html: post.content } }></div>
+            <p>{post.included[0].attributes.name}</p>
+            <div dangerouslySetInnerHTML={ { __html: post.data.attributes.body.value } }></div>
             <hr className={styles.sep}/>
             <Link href="/blog/">Back to all posts</Link>
         </div>
